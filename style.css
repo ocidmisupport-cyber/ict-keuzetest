@@ -9,8 +9,9 @@ body{display:grid;place-items:center}
 
 /* Bewegende neonrand om het tekstscherm. */
 .card{position:relative;isolation:isolate;border:0;background:transparent;overflow:visible}
-.card::before{content:"";position:absolute;inset:-3px;border-radius:27px;background:conic-gradient(from 0deg,#ff8a00,#ffe45c,#52e3a7,#55e7ff,#9d6cff,#ff6f91,#ff8a00);filter:drop-shadow(0 0 7px #55e7ff) drop-shadow(0 0 14px #ff6f91);animation:neon-border-spin 5s linear infinite;z-index:0}
+.card::before{--neon-angle:0deg;content:"";position:absolute;inset:-3px;border-radius:27px;background:conic-gradient(from var(--neon-angle),#ff8a00 0deg,#ff8a00 45deg,#ffe45c 75deg,#52e3a7 130deg,#55e7ff 190deg,#9d6cff 250deg,#ff6f91 310deg,#ff8a00 360deg);filter:drop-shadow(0 0 7px #55e7ff) drop-shadow(0 0 14px #ff6f91);animation:neon-border-spin 1.8s linear infinite;z-index:0}
 .card::after{content:"";position:absolute;inset:3px;border-radius:21px;background:linear-gradient(150deg,#15375dF2,#0c1e39F0);z-index:1}
 .card>*{position:relative;z-index:2}
-@keyframes neon-border-spin{to{transform:rotate(1turn)}}
+@property --neon-angle{syntax:"<angle>";inherits:false;initial-value:0deg}
+@keyframes neon-border-spin{to{--neon-angle:360deg}}
 @media (prefers-reduced-motion:reduce){.card::before{animation:none}}
