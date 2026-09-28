@@ -6,3 +6,11 @@
 /* Vaste staande telefoonverhouding: 9 breed bij 20 hoog. */
 body{display:grid;place-items:center}
 .shell{width:min(100vw,45svh);height:min(100svh,222.222vw);min-height:0;aspect-ratio:9/20;overflow:hidden}
+
+/* Bewegende neonrand om het tekstscherm. */
+.card{position:relative;isolation:isolate;border:0;background:transparent;overflow:visible}
+.card::before{content:"";position:absolute;inset:-2px;border-radius:26px;background:conic-gradient(from 0deg,#ff8a00,#ffe45c,#52e3a7,#55e7ff,#9d6cff,#ff6f91,#ff8a00);filter:drop-shadow(0 0 7px #55e7ff99) drop-shadow(0 0 12px #ff6f9188);animation:neon-border-spin 5s linear infinite;z-index:-2}
+.card::after{content:"";position:absolute;inset:2px;border-radius:22px;background:linear-gradient(150deg,#15375dF2,#0c1e39F0);z-index:-1}
+.card>*{position:relative;z-index:1}
+@keyframes neon-border-spin{to{transform:rotate(1turn)}}
+@media (prefers-reduced-motion:reduce){.card::before{animation:none}}
