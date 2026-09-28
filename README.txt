@@ -5,6 +5,7 @@ Upload deze bestanden samen naar dezelfde map van je website:
 - opleidingen.html
 - keuzetest.html
 - studies.js
+- neon.js
 - style.css
 - ter-aa-logo.png
 

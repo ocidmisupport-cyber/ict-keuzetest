@@ -130,8 +130,8 @@ body {
   content: "";
   position: absolute;
   z-index: 0;
-  inset: -3px;
-  border-radius: 27px;
+  inset: -1px;
+  border-radius: 25px;
   background: linear-gradient(
     110deg,
     var(--oranje) 0%,
@@ -144,28 +144,22 @@ body {
     var(--oranje) 100%
   );
   background-size: 300% 100%;
-  background-position: 0% 50%;
-  filter: drop-shadow(0 0 7px var(--cyaan)) drop-shadow(0 0 14px var(--roze));
-  animation: neon-kleuren-rond 1.6s linear infinite;
+  background-position: var(--neon-shift, 0%) 50%;
+  filter: drop-shadow(0 0 3px var(--cyaan)) drop-shadow(0 0 5px var(--roze));
 }
 
 .card::after {
   content: "";
   position: absolute;
   z-index: 1;
-  inset: 3px;
-  border-radius: 21px;
+  inset: 1px;
+  border-radius: 23px;
   background: linear-gradient(150deg, var(--kaart-boven), var(--kaart-onder));
 }
 
 .card > * {
   position: relative;
   z-index: 2;
-}
-
-@keyframes neon-kleuren-rond {
-  from { background-position: 0% 50%; }
-  to { background-position: 300% 50%; }
 }
 
 /* 7. TEKSTEN EN TITELS. */
@@ -483,9 +477,4 @@ option {
   .result { padding: 10px; }
   .result p { font-size: 0.75rem; }
   .footer { font-size: 0.61rem; }
-}
-
-/* Houd rekening met leerlingen die minder beweging op hun apparaat hebben ingesteld. */
-@media (prefers-reduced-motion: reduce) {
-  .card::before { animation: none; }
 }

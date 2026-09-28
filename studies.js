@@ -12,3 +12,15 @@ const STUDIES=[
  {id:'software',name:'Software engineer',level:4,summary:'Je bedenkt, ontwerpt, ontwikkelt en test computerprogramma’s. Je werkt in een ontwikkelteam aan applicaties voor bijvoorbeeld pc’s, telefoons of apparaten. Daarbij leer je ook goed luisteren naar de opdrachtgever, verbeteringen voorstellen en jouw werk presenteren.',url:'https://www.ter-aa.nl/opleiding/software-engineer'},
  {id:'software-en',name:'Software engineer (tweetalig)',level:4,summary:'Je leert programma’s ontwerpen, bouwen, testen en onderhouden in een ontwikkelteam. De inhoud is gelijk aan Software engineer, maar ruim de helft van de lessen, het lesmateriaal en de toetsen zijn in het Engels. Ook internationale samenwerking krijgt extra aandacht.',url:'https://www.ter-aa.nl/opleiding/software-engineer-tweetalig'}
 ];
+
+/* Laat de dunne kleurrand bewegen op de opleidingen- en testpagina. */
+const kaarten = document.querySelectorAll('.card');
+const rondeDuur = 1800;
+
+function laatKleurenLopen(tijd) {
+  const positie = ((tijd % rondeDuur) / rondeDuur) * 300;
+  kaarten.forEach((kaart) => kaart.style.setProperty('--neon-shift', `${positie}%`));
+  requestAnimationFrame(laatKleurenLopen);
+}
+
+requestAnimationFrame(laatKleurenLopen);
