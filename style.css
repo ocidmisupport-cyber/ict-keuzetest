@@ -2,3 +2,7 @@
 
 /* Aanpassingen keuzehulp */
 .grow{justify-content:flex-start}.logo{display:block;text-decoration:none}.logo img{display:block;width:104px;max-height:44px;object-fit:contain;object-position:left center}.logo small{display:none}select{background:#092a24;color:#f7fbff;color-scheme:dark;border-color:#86c5ad}option{background:#092a24;color:#f7fbff}
+
+/* Vaste staande telefoonverhouding: 9 breed bij 20 hoog. */
+body{display:grid;place-items:center}
+.shell{width:min(100vw,45svh);height:min(100svh,222.222vw);min-height:0;aspect-ratio:9/20;overflow:hidden}
