@@ -12,37 +12,3 @@ const STUDIES=[
  {id:'software',name:'Software engineer',level:4,summary:'Je bedenkt, ontwerpt, ontwikkelt en test computerprogramma’s. Je werkt in een ontwikkelteam aan applicaties voor bijvoorbeeld pc’s, telefoons of apparaten. Daarbij leer je ook goed luisteren naar de opdrachtgever, verbeteringen voorstellen en jouw werk presenteren.',url:'https://www.ter-aa.nl/opleiding/software-engineer'},
  {id:'software-en',name:'Software engineer (tweetalig)',level:4,summary:'Je leert programma’s ontwerpen, bouwen, testen en onderhouden in een ontwikkelteam. De inhoud is gelijk aan Software engineer, maar ruim de helft van de lessen, het lesmateriaal en de toetsen zijn in het Engels. Ook internationale samenwerking krijgt extra aandacht.',url:'https://www.ter-aa.nl/opleiding/software-engineer-tweetalig'}
 ];
-
-/* Bewegend lichtstreepje op de rand van de opleidingen- en testpagina. */
-const kaarten = document.querySelectorAll('.card');
-const rondeDuur = 3200;
-
-kaarten.forEach((kaart) => {
-  const loper = document.createElement('span');
-  loper.className = 'neon-runner';
-  kaart.append(loper);
-});
-
-function beweegLopers(tijd) {
-  const ronde = (tijd % rondeDuur) / rondeDuur;
-
-  kaarten.forEach((kaart) => {
-    const loper = kaart.querySelector('.neon-runner');
-    const zijde = ronde * 4;
-    const positie = (zijde % 1) * 84;
-
-    if (zijde < 1) {
-      loper.style.cssText = `top:1px;left:${positie}%;right:auto;bottom:auto;width:16%;height:2px`;
-    } else if (zijde < 2) {
-      loper.style.cssText = `top:${positie}%;right:1px;left:auto;bottom:auto;width:2px;height:16%`;
-    } else if (zijde < 3) {
-      loper.style.cssText = `bottom:1px;right:${positie}%;top:auto;left:auto;width:16%;height:2px`;
-    } else {
-      loper.style.cssText = `bottom:${positie}%;left:1px;top:auto;right:auto;width:2px;height:16%`;
-    }
-  });
-
-  requestAnimationFrame(beweegLopers);
-}
-
-requestAnimationFrame(beweegLopers);

@@ -121,31 +121,35 @@ body {
 }
 
 /*
-  6. BEWEGENDE KLEURENRAND
-  De ::before-laag is de felle buitenrand.
-  De ::after-laag is het donkere vlak eroverheen.
-  De inhoud krijgt z-index 2 en blijft daardoor altijd leesbaar.
+  6. RUSTIG DRAAIENDE KLEURENRAND
+  Dit is één doorlopende, dunne rand: geen los lichtstreepje.
+  De kleurverdeling van de rand draait als geheel rond de kaart.
+  De ::after-laag legt het donkere binnenvlak eroverheen.
 */
+@property --rand-hoek {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
 .card::before {
   content: "";
   position: absolute;
   z-index: 0;
   inset: -1px;
   border-radius: 25px;
-  background: linear-gradient(
-    110deg,
-    var(--oranje) 0%,
-    var(--geel) 18%,
-    var(--groen) 34%,
-    var(--cyaan) 48%,
-    #ffffff 55%,
-    var(--paars) 66%,
-    var(--roze) 82%,
-    var(--oranje) 100%
+  background: conic-gradient(
+    from var(--rand-hoek),
+    var(--cyaan),
+    var(--paars),
+    var(--roze),
+    var(--oranje),
+    var(--geel),
+    var(--groen),
+    var(--cyaan)
   );
-  background-size: 300% 100%;
-  background-position: var(--neon-shift, 0%) 50%;
-  filter: drop-shadow(0 0 3px var(--cyaan)) drop-shadow(0 0 5px var(--roze));
+  animation: draai-kleurenrand 7s linear infinite;
+  filter: drop-shadow(0 0 2px var(--cyaan)) drop-shadow(0 0 3px var(--roze));
 }
 
 .card::after {
@@ -162,19 +166,10 @@ body {
   z-index: 2;
 }
 
-/*
-  Dit is het kleine, felle streepje dat echt langs de rand loopt.
-  Het wordt door neon.js / studies.js telkens op een andere zijde gezet.
-*/
-.neon-runner {
-  position: absolute;
-  z-index: 3;
-  width: 16%;
-  height: 2px;
-  border-radius: 999px;
-  pointer-events: none;
-  background: linear-gradient(90deg, transparent, #fff, var(--cyaan), transparent);
-  box-shadow: 0 0 6px #fff, 0 0 12px var(--cyaan);
+@keyframes draai-kleurenrand {
+  to {
+    --rand-hoek: 360deg;
+  }
 }
 
 /* 7. TEKSTEN EN TITELS. */
