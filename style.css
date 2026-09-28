@@ -162,6 +162,21 @@ body {
   z-index: 2;
 }
 
+/*
+  Dit is het kleine, felle streepje dat echt langs de rand loopt.
+  Het wordt door neon.js / studies.js telkens op een andere zijde gezet.
+*/
+.neon-runner {
+  position: absolute;
+  z-index: 3;
+  width: 16%;
+  height: 2px;
+  border-radius: 999px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, #fff, var(--cyaan), transparent);
+  box-shadow: 0 0 6px #fff, 0 0 12px var(--cyaan);
+}
+
 /* 7. TEKSTEN EN TITELS. */
 .eyebrow {
   margin-bottom: 9px;
